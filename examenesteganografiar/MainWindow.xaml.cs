@@ -21,6 +21,8 @@ namespace examenesteganografiar
     /// </summary>
     public partial class MainWindow : Window
     {
+        WriteableBitmap bmp;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -28,10 +30,15 @@ namespace examenesteganografiar
 
         private void btnGenerarImatge_Click(object sender, RoutedEventArgs e)
         {
-            WriteableBitmap bmp = generarImatge();
+            bmp = generarImatge();
 
             this.imgImatge.Source = bmp;
             this.imgImatge.Stretch = Stretch.Uniform;
+        }
+
+        private void btnMissatge_Click(object sender, RoutedEventArgs e)
+        {
+            esteganografiar(bmp, "exemple");
         }
 
         public WriteableBitmap generarImatge()
@@ -74,14 +81,13 @@ namespace examenesteganografiar
             return bmp;
         }
 
-        public WriteableBitmap esteganografiar(WriteableBitmap img, string msg)
+        public WriteableBitmap esteganografiar(WriteableBitmap img, string missatge)
         {
             byte[] bytesImatges;
             int stride = img.PixelWidth * (img.Format.BitsPerPixel / 8);
             bytesImatges = new byte[img.PixelHeight * stride];//4(RGBA) / 8 per passar a BytesPerPixel. 
             img.CopyPixels(bytesImatges, stride, 0);
 
-            string missatge = "exemple";
             int[] bitsAOcultar = new int[] { 5,6,7,13,14,15,22,23 };
 
             int[] missatgeBinari = new int[missatge.Length * 8];

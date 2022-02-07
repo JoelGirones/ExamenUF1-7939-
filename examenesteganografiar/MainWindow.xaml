@@ -17,6 +17,6 @@
         </Grid.ColumnDefinitions>
         <Image Name="imgImatge" Margin="10,10,10,10" RenderOptions.BitmapScalingMode="NearestNeighbor" Grid.ColumnSpan="2"/>
         <Button x:Name="btnGenerarImatge" Content="Generar Imatge" Click="btnGenerarImatge_Click" Grid.Row="1"/>
-        <Button x:Name="btnMissatge" Content="Amagar missatge" Click="btnGenerarImatge_Click" Grid.Row="1" Grid.Column="1"/>
+        <Button x:Name="btnMissatge" Content="Amagar missatge" Click="btnMissatge_Click"  Grid.Row="1" Grid.Column="1"/>
     </Grid>
 </Window>
